@@ -2,16 +2,17 @@
     ViewData["Title"] = "Book Details";
 }
 <div class="container-md">
-    <h1>Book: @ViewBag.book.Title</h1>
-    <h1>Author: @ViewBag.author.Name</h1>
-    <h1>Language: @ViewBag.book.Language</h1>
+    <h3>Book: @ViewBag.book.Title</h3>
+    <h3>Author: <a asp-controller="Home" asp-action="ShowAuthorDetails" asp-route-authorid="@ViewBag.book.AuthorId">@ViewBag.author.Name</a></h3>
+    <h3>Language: @ViewBag.book.Language</h3>
     <br />
 
     <img src="@ViewBag.book.CoverPath" alt="Image" style="width: 300px; height: 400px;" />
 
     <br />
     <br />
-    <a asp-controller="Home" asp-action="ShowAuthorDetails" asp-route-authorid="@ViewBag.book.AuthorId">@ViewBag.author.Name</a>
     <a asp-controller="Home" asp-action="UpdateBook" asp-route-id="@ViewBag.book.Id" class="btn btn-primary mx-2">Update</a>
     <a asp-controller="Home" asp-action="DeleteBook" asp-route-id="@ViewBag.book.Id" class="btn btn-danger mx-2">Delete</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+
 </div>

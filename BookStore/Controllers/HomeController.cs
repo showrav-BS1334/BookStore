@@ -171,11 +171,63 @@ namespace BookStore.Controllers
             return RedirectToAction("Index");
         }
 
-
-/*        public IActionResult testMethod()
+        // for adding a new book to books table ----------------------------------------
+        // GET
+        public IActionResult AddBook()
         {
-            return RedirectToAction("Index");
+            return View();
+        }
 
-        }*/
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddBook(Book book, string authorName)
+        {
+            if (ModelState.IsValid)
+            {
+                bool isNewAuthor = true;
+                var allAuthors = _db.Authors;
+                int idPrevAuthor = 0;
+
+                // checking if the author is already here or not
+                foreach (var author in allAuthors)
+                {
+                    if (authorName.Trim() == author.Name)
+                    {
+                        isNewAuthor = false;
+                        idPrevAuthor = author.Id;
+                        break;
+                    }
+                }
+                // if we get a new author, update the author table
+                if (isNewAuthor)
+                {
+                    var newAuthor = new Author { Name = authorName };
+                    _db.Authors.Add(newAuthor);
+                    _db.SaveChanges();
+                    var lastObject = _db.Authors.OrderByDescending(x => x.Id).FirstOrDefault();
+                    if (lastObject != null)
+                    {
+                        book.AuthorId = lastObject.Id;
+                    }
+                }
+                else
+                {
+                    book.AuthorId = idPrevAuthor;
+                }
+
+                // update the book table
+                _db.Books.Add(book);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        /*        public IActionResult testMethod()
+                {
+                    return RedirectToAction("Index");
+
+                }*/
     }
 }
