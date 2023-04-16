@@ -1,0 +1,30 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Update Author";
+}
+
+<form method="post" asp-action="UpdateAuthor">
+    <div class="border" p-3 mt-4>
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Author info</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Address</label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label> Link</label>
+            <input asp-for="ImagePath" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+    </div>
+</form>
