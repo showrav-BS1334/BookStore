@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Update Book";
+    var title = ViewBag.book.Title;
+    var author = ViewBag.author.Name;
+    var coverPath = ViewBag.book.CoverPath;
+    var authorId = ViewBag.book.AuthorId;
+    var language = ViewBag.book.Language;
+}
+
+<form method="post" asp-action="UpdateBook">
+    <div class="border" p-3 mt-4>
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Book info</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for=@title></label>
+            <input asp-for=@title class="form-control" />
+            <span asp-validation-for=@title class="text-danger"></span>
+        </div>
+@*        <div class="mb-3">
+            <label asp-for=@author></label>
+            <input asp-for=@author class="form-control" />
+            <span asp-validation-for=@author class="text-danger"></span>
+        </div>*@
+        <div class="mb-3">
+            <label asp-for=@coverPath></label>
+            <input asp-for=@coverPath class="form-control" />
+            <span asp-validation-for=@coverPath class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for=@language></label>
+            <input asp-for=@language class="form-control" />
+            <span asp-validation-for=@language class="text-danger"></span>
+        </div>
+        <input asp-for=@authorId class="form-control" type="hidden"/>
+
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <Partial name="_ValidationScriptsPartial" />
+    }
+}
