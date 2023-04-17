@@ -21,7 +21,7 @@
                     </td>
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Home" asp-action="ShowBookDetails" asp-route-id="@obj.Id" class="btn btn-primary mx-2">Details</a>
+                            <a asp-controller="Book" asp-action="ShowBookDetails" asp-route-id="@obj.Id" class="btn btn-primary mx-2">Details</a>
                         </div>
                     </td>
                 </tr>
@@ -29,5 +29,5 @@
         </tbody>
     </table>
 
-    <a asp-controller="Home" asp-action="AddBook" class="btn btn-success mx-2" style="vertical-align:middle; align-items: center">Add a new book</a>
+    <a asp-controller="Book" asp-action="AddBook" class="btn btn-success mx-2" style="vertical-align:middle; align-items: center">Add a new book</a>
 </div>
