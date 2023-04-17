@@ -3,7 +3,7 @@
 }
 <div class="container-md">
     <h3>Book: @ViewBag.book.Title</h3>
-    <h3>Author: <a asp-controller="Home" asp-action="ShowAuthorDetails" asp-route-authorid="@ViewBag.book.AuthorId">@ViewBag.author.Name</a></h3>
+    <h3>Author: <a asp-controller="Author" asp-action="ShowAuthorDetails" asp-route-authorid="@ViewBag.book.AuthorId">@ViewBag.author.Name</a></h3>
     <h3>Language: @ViewBag.book.Language</h3>
     <br />
 
@@ -11,8 +11,8 @@
 
     <br />
     <br />
-    <a asp-controller="Home" asp-action="UpdateBook" asp-route-id="@ViewBag.book.Id" class="btn btn-primary mx-2">Update</a>
-    <a asp-controller="Home" asp-action="DeleteBook" asp-route-id="@ViewBag.book.Id" class="btn btn-danger mx-2">Delete</a>
+    <a asp-controller="Book" asp-action="UpdateBook" asp-route-id="@ViewBag.book.Id" class="btn btn-primary mx-2">Update</a>
+    <a asp-controller="Book" asp-action="DeleteBook" asp-route-id="@ViewBag.book.Id" class="btn btn-danger mx-2">Delete</a>
     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
 
 </div>

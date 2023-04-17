@@ -27,11 +27,11 @@
         </tbody>
     </table>
 
-    <a asp-controller="Home" asp-action="UpdateAuthor" asp-route-id=@author.Id class="btn btn-primary mx-2">Update</a>
+    <a asp-controller="Author" asp-action="UpdateAuthor" asp-route-id=@author.Id class="btn btn-primary mx-2">Update</a>
     @*<a asp-controller="Home" asp-action="DeleteAuthor" asp-route-id=@author.Id class="btn btn-danger mx-2">Delete</a>*@
 
     @*delete button with a confirmation pop up*@
-    <a onclick="return confirm('All books of this author will be deleted. Are you sure to delete?')" asp-controller="Home" asp-action="DeleteAuthor" asp-route-id=@author.Id class="btn btn-danger mx-2">Delete</a>
+    <a onclick="return confirm('All books of this author will be deleted. Are you sure to delete?')" asp-controller="Author" asp-action="DeleteAuthor" asp-route-id=@author.Id class="btn btn-danger mx-2">Delete</a>
     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
 
 </div>
