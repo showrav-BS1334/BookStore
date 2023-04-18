@@ -50,12 +50,12 @@ namespace BookStore.Controllers
             {
                 return NotFound();
             }
-            var author = _db.Authors.Find(book.AuthorId);
-            if (author == null)
+            var authors = _db.Authors;
+            if (authors == null)
             {
                 return NotFound();
             }
-            ViewBag.author = author;
+            ViewBag.authors = authors;
             ViewBag.book = book;
             return View();
         }

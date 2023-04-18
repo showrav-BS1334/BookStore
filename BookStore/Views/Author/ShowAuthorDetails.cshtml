@@ -20,7 +20,7 @@
             {
                 <tr>
                     <td width="50%">
-                        @book.Title
+                        <a asp-controller="Book" asp-action="ShowBookDetails" asp-route-id="@book.Id">@book.Title</a>
                     </td>
                 </tr>
             }
