@@ -118,7 +118,7 @@ namespace BookStore.Controllers
             {
                 _db.Authors.Add(author);
                 _db.SaveChanges();
-                return RedirectToAction("Addbook", "Book");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
