@@ -100,5 +100,27 @@ namespace BookStore.Controllers
             //_db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+
+        // for adding a new author to author table
+        // GET
+        public IActionResult AddAuthor()
+        {
+            return View();
+        }
+
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddAuthor(Author author)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Authors.Add(author);
+                _db.SaveChanges();
+                return RedirectToAction("Addbook", "Book");
+            }
+            return View();
+        }
     }
 }
