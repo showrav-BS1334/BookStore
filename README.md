@@ -1,8 +1,8 @@
 # BookStore [A website for books]
 
-## Project Description
+# Project Description
 
-This project is a simple website for books where users can view book details, update book properties, and add new books. The website also includes an author section where users can view author details, update author properties, and delete authors (along with their associated books) from the database.
+This project is a simple website for books where users can view book details, update book properties, and add new books. The website also includes an author section where users can view author details, update author properties. And Authors can be deleted (along with their associated books) from the database.
 
 # Features
 One can - 
@@ -14,3 +14,7 @@ One can -
 - update author properties [the change will be applicable for author's all books]
 - remove an author[also all books of the author will be deleted]
 - get a confirmation pop-up before removing an author
+
+# Features can be added
+- Books can be shown in a card format
+- login option can be added
