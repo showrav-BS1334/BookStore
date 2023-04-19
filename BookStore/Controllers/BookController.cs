@@ -12,7 +12,7 @@ namespace BookStore.Controllers
         {
             _db = db;
         }
-        
+
         // action for Book page
         public IActionResult Index()
         {
@@ -50,12 +50,12 @@ namespace BookStore.Controllers
             {
                 return NotFound();
             }
-            var author = _db.Authors.Find(book.AuthorId);
-            if (author == null)
+            var authors = _db.Authors;
+            if (authors == null)
             {
                 return NotFound();
             }
-            ViewBag.author = author;
+            ViewBag.authors = authors;
             ViewBag.book = book;
             return View();
         }
@@ -84,7 +84,7 @@ namespace BookStore.Controllers
                 return NotFound();
             }
             _db.Books.Remove(obj);
-            _db.SaveChanges(); 
+            _db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
@@ -92,53 +92,27 @@ namespace BookStore.Controllers
         // GET
         public IActionResult AddBook()
         {
+            ViewBag.authors = _db.Authors;
             return View();
         }
 
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddBook(Book book, string authorName)
+        public IActionResult AddBook(Book book)
         {
             if (ModelState.IsValid)
             {
-                bool isNewAuthor = true;
-                var allAuthors = _db.Authors;
-                int idPrevAuthor = 0;
-
-                // checking if the author is already here or not
-                foreach (var author in allAuthors)
-                {
-                    if (authorName.Trim() == author.Name)
-                    {
-                        isNewAuthor = false;
-                        idPrevAuthor = author.Id;
-                        break;
-                    }
-                }
-                // if we get a new author, update the author table
-                if (isNewAuthor)
-                {
-                    var newAuthor = new Author { Name = authorName };
-                    _db.Authors.Add(newAuthor);
-                    _db.SaveChanges();
-                    var lastObject = _db.Authors.OrderByDescending(x => x.Id).FirstOrDefault();
-                    if (lastObject != null)
-                    {
-                        book.AuthorId = lastObject.Id;
-                    }
-                }
-                else
-                {
-                    book.AuthorId = idPrevAuthor;
-                }
-
-                // update the book table
                 _db.Books.Add(book);
                 _db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             return View(book);
         }
+
+        //public IActionResult testMethod()
+        //{
+        //    return RedirectToAction("Index");
+        //}
     }
 }

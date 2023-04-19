@@ -1,7 +1,8 @@
 ﻿@model Book
 
 @{
-    ViewData["Title"] = "AddBook";
+    ViewData["Title"] = "Add Book";
+    var authors = ViewBag.authors;
 }
 
 <form method="post">
@@ -24,12 +25,19 @@
             <input asp-for="Language" class="form-control" />
         </div>
         <div class="mb-3">
-            <label>Author</label>
-            <input type="text" name="authorName" class="form-control" />
+            <label>Select an author</label>
+            <select name="authorId">
+                @foreach (var author in authors)
+                {
+                    <option value="@author.Id">@author.Name</option>
+                }
+            </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Create book</button>
         <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+        <a asp-controller="Author" asp-action="AddAuthor" class="btn btn-success mx-2" style="vertical-align:middle; align-items: center">Add a new author</a>
+
 
     </div>
 </form>

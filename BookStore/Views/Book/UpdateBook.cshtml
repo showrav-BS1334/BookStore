@@ -1,10 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Update Book";
     var title = ViewBag.book.Title;
-    var author = ViewBag.author.Name;
     var coverPath = ViewBag.book.CoverPath;
-    var authorId = ViewBag.book.AuthorId;
     var language = ViewBag.book.Language;
+    var authors = ViewBag.authors;
 }
 
 <form method="post" asp-action="UpdateBook">
@@ -30,9 +29,20 @@
             <label>Language</label>
             <input asp-for=@language class="form-control" />
         </div>
-        <input asp-for=@authorId class="form-control" type="hidden" />
+
+        @*dropdown menu*@
+        <div class="mb-3">
+            <label>Select an author</label>
+            <select name="authorId">
+                @foreach (var author in authors)
+                {
+                    <option value="@author.Id">@author.Name</option>
+                }
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
         <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+        <a asp-controller="Author" asp-action="AddAuthor" class="btn btn-success mx-2" style="vertical-align:middle; align-items: center">Add a new author</a>
     </div>
 </form>

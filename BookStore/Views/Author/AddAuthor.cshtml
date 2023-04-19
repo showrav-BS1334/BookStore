@@ -1,0 +1,29 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Add Author";
+}
+
+<form method="post">
+    <div class="border" p-3 mt-4>
+        <div class="row pb-2">
+            <h2 class="text-primary">Add an author</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImagePath"></label>
+            <input asp-for="ImagePath" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
+    </div>
+</form>
