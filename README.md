@@ -6,10 +6,11 @@ This project is a simple website for books where users can view book details, up
 
 ## Features
 One can - 
-- add a new book [if the author's name is new for the author table, a new author will be added to the table]
+- add a new book [if the author is not in the dropdown options, a new author should be added first.]
 - see a book's details
 - update book properties
 - remove a book from the book table
+- add an new author [it will be added to the dropdown list of authors also]
 - see an author's details
 - update author properties [the change will be applicable for author's all books]
 - remove an author[also all books of the author will be deleted]
@@ -18,7 +19,7 @@ One can -
 ## Images
 Here are some images of features
 </br>
-<h4> Home page </h4>
+<h4> Page for adding a book </h4>
 </br>
 <img width="900" alt="add a book" src="https://user-images.githubusercontent.com/128456262/232980828-71e65d3a-056e-4586-a16a-4f91d4eb0e7e.png">
 <h4> Confirmation pop-up before deleting an author </h4>
